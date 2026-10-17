@@ -1,6 +1,4 @@
 // Реєстрація та вхід через API (server/main.py, MongoDB).
-const server_url = "https://codebloom.demerden.cc/api";
-
 (function () {
     var form = document.querySelector('form');
     var btn = form && form.querySelector('.register_button');
@@ -36,28 +34,14 @@ const server_url = "https://codebloom.demerden.cc/api";
         btn.disabled = true;
         btn.textContent = 'Зачекай...';
         try {
-            var res = await fetch(server_url + url, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(body)
-            });
-            var data = await res.json().catch(function () { return {}; });
-            if (!res.ok) {
-                var d = data.detail;
-                return showError(typeof d === 'string' ? d : 'Перевір введені дані');
-            }
+            var data = await CB.api('POST', url, body);
             try {
-                localStorage.setItem('nick_name', data.nick_name);
                 localStorage.setItem('auth_token', data.token);
-                localStorage.setItem('is_admin', data.is_admin ? '1' : '');
-                localStorage.setItem('role', data.role || 'user');
-                if (data.avatar) localStorage.setItem('avatar_url', server_url + data.avatar);
-                else localStorage.removeItem('avatar_url');
             } catch (e) {}
-            // Адміністратора одразу ведемо в панель модерації
+            CB.remember(data);
             location.href = data.is_admin ? 'admin.html' : 'index.html';
         } catch (e) {
-            showError('Сервер недоступний. Запусти server/main.py');
+            showError(e.message || 'Перевір введені дані');
         } finally {
             btn.disabled = false;
             btn.textContent = label;

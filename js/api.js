@@ -1,6 +1,6 @@
-// Спільний клієнт API (server/main.py). Токен сесії лежить у localStorage.
+// Спільний клієнт API (server/main.py на Vercel). Токен сесії лежить у localStorage.
 var CB = (function () {
-    var SERVER = 'https://codebloom.demerden.cc/api';
+    var SERVER = 'https://code-bloom-server.vercel.app';
 
     function get(key) { try { return localStorage.getItem(key); } catch (e) { return null; } }
 
@@ -12,7 +12,7 @@ var CB = (function () {
         try {
             res = await fetch(SERVER + path, { method: method, headers: headers, body: body ? JSON.stringify(body) : undefined });
         } catch (e) {
-            throw new Error('Сервер недоступний. Запусти server/main.py');
+            throw new Error('Сервер недоступний. Перевір https://code-bloom-server.vercel.app/');
         }
         var data = await res.json().catch(function () { return {}; });
         if (!res.ok) {
@@ -58,6 +58,7 @@ var CB = (function () {
     }
 
     return {
+        SERVER: SERVER,
         api: api,
         ago: ago,
         badge: badge,
