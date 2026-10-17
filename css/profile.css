@@ -1,0 +1,185 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    width: auto;
+    font-family: Arial;
+    background-color: black;
+    background-image: url("../images/background.png");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.header {
+    width: 100%;
+    height: 100px;
+    background-color: rgb(31, 31, 255);
+    display: flex;
+}
+
+.left_part {
+    display: flex;
+    flex: 1;
+    height: 100%;
+    background-color: black;
+    flex-direction: row;
+}
+
+.middle_part {
+    display: flex;
+    flex: 2;
+    height: 100%;
+    background-color: rgb(0, 0, 0);
+    align-items: center;
+    justify-content: center;
+    gap: 4%;
+    box-sizing: border-box;
+}
+
+.right_part {
+    display: flex;
+    flex: 1;
+    height: 100%;
+    background-color: rgb(0, 0, 0);
+    align-items: center;
+    gap: 10%;
+}
+
+.logo_img {
+    height: 50px;
+    width: auto;
+}
+
+.logo_div {
+    display: flex;
+    align-items: center;
+    padding-left: 1.1%;
+    box-sizing: border-box;
+}
+
+.logo_div a {
+    display: flex;
+    align-items: center;
+}
+
+/* Лінки в хедері: без підкреслення, з плавною лінією при наведенні */
+.header_link {
+    position: relative;
+    display: inline-block;
+    font-size: 30px;
+    color: rgb(42, 143, 255);
+    text-decoration: none;
+    padding-bottom: 4px;
+    transition: color 0.3s;
+}
+
+.header_link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    border-radius: 2px;
+    background-color: rgb(42, 143, 255);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+}
+
+.header_link:hover {
+    color: rgb(110, 180, 255);
+}
+
+.header_link:hover::after {
+    transform: scaleX(1);
+}
+
+.search_input {
+    height: 45%;
+    width: 70%;
+}
+
+.theme_switch {
+    width: 40px;
+    height: 40px;
+    margin-left: -10px;
+    background-color: rgb(42, 143, 255);
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+/* ---------- Сторінка профілю ---------- */
+.profile_page {
+    display: flex;
+    justify-content: center;
+    padding: 56px 16px;
+}
+
+.profile_card {
+    width: 100%;
+    max-width: 460px;
+    padding: 36px 32px;
+    box-sizing: border-box;
+    text-align: center;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.6);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(42, 143, 255, 0.25);
+    border-radius: 24px;
+    box-shadow: 0 20px 60px -20px rgba(42, 143, 255, 0.45);
+}
+
+.profile_avatar {
+    width: 112px;
+    height: 112px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 0 3px rgb(42, 143, 255);
+}
+
+.profile_nick { margin: 18px 0 4px; font-size: 28px; word-break: break-word; }
+.profile_status { margin: 0 0 24px; color: rgba(255, 255, 255, 0.6); font-size: 15px; }
+
+.profile_info { margin: 0 0 28px; text-align: left; }
+
+.profile_info div {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.profile_info dt { color: rgba(255, 255, 255, 0.55); }
+.profile_info dd { margin: 0; font-weight: 600; text-align: right; word-break: break-all; }
+
+.profile_actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+
+.btn_p {
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    background: rgb(42, 143, 255);
+    border: 1px solid rgb(42, 143, 255);
+    border-radius: 999px;
+    transition: filter 0.2s, background 0.2s;
+}
+
+.btn_p:hover { filter: brightness(1.12); }
+.btn_p_ghost { background: transparent; }
+.btn_p_ghost:hover { background: rgba(42, 143, 255, 0.2); }
+.btn_p_danger { background: transparent; border-color: rgba(255, 69, 58, 0.7); color: #ff6b61; }
+.btn_p_danger:hover { background: rgba(255, 69, 58, 0.25); }
+
+html[data-theme="light"] .profile_card {
+    color: #0b1220;
+    background: rgba(255, 255, 255, 0.8);
+}
+html[data-theme="light"] .profile_status,
+html[data-theme="light"] .profile_info dt { color: #4b5563; }
+html[data-theme="light"] .profile_info div { border-top-color: rgba(11, 18, 32, 0.12); }
+html[data-theme="light"] .btn_p_ghost { color: #0b1220; }

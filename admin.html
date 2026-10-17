@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Адмін-панель — Code Bloom</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/admin.css?v=3">
+    <link rel="stylesheet" href="../css/theme.css?v=3">
+    <script src="../js/theme.js?v=4"></script>
+    <script src="../js/session.js?v=4"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap">
+    <script src="../js/sidebar.js?v=4"></script>
+    <link rel="stylesheet" href="../css/human.css">
+    <link rel="stylesheet" href="../css/responsive.css?v=4">
+  </head>
+<body>
+    <div class="header">
+        <div class="left_part">
+            <div class="logo_div">
+                <a href="index.html"><img class="logo_img" src="../images/logo_main.png" alt=""> <img class="logo_img" src="../images/logo_text_main.png" alt=""></a>
+            </div>
+        </div>
+        <div class="middle_part">
+            <a class="header_link" href="index.html">Головна</a>
+            <a class="header_link" href="chat.html">Чат</a>
+            <a class="header_link" href="forum.html">Форум</a>
+            <a class="header_link" href="admin.html" aria-current="page">Адмін</a>
+        </div>
+        <div class="right_part">
+            <a class="avatar_link user-only" href="profile.html" aria-label="Профіль"><img height="60px" src="../images/images.png" alt=""></a>
+            <button class="logout user-only js-logout" type="button">Вийти</button>
+            <button class="theme_switch">🌓</button>
+        </div>
+    </div>
+
+    <main class="admin" hidden id="admin">
+        <h1>Адмін-панель <span class="adm_badge">повний доступ</span></h1>
+        <p class="adm_error" id="adm_error" role="alert"></p>
+
+        <div class="adm_tabs" role="tablist">
+            <button class="adm_tab active" type="button" data-tab="chats">Чати</button>
+            <button class="adm_tab" type="button" data-tab="forum">Форум</button>
+            <button class="adm_tab" type="button" data-tab="users">Користувачі</button>
+        </div>
+
+        <section class="adm_pane" id="pane_chats">
+            <div class="adm_cols">
+                <div class="adm_box">
+                    <h2>Чати</h2>
+                    <form class="adm_form" id="room_form" autocomplete="off">
+                        <input id="room_icon" type="text" maxlength="4" placeholder="#" aria-label="Іконка" class="adm_icon_in">
+                        <input id="room_name" type="text" maxlength="40" placeholder="Назва нового чату" aria-label="Назва чату" required>
+                        <label class="adm_check"><input id="room_vip" type="checkbox"> VIP</label>
+                        <button class="adm_btn" type="submit">Додати</button>
+                    </form>
+                    <ul class="adm_list" id="rooms_list"></ul>
+                </div>
+                <div class="adm_box">
+                    <h2 id="msgs_title">Повідомлення</h2>
+                    <form class="adm_form" id="msg_form" autocomplete="off">
+                        <input id="msg_text" type="text" maxlength="1000" placeholder="Написати від імені адміна…" aria-label="Повідомлення">
+                        <button class="adm_btn" type="submit">Надіслати</button>
+                    </form>
+                    <ul class="adm_list" id="msgs_list"></ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="adm_pane" id="pane_forum" hidden>
+            <div class="adm_cols">
+                <div class="adm_box">
+                    <h2>Теми</h2>
+                    <ul class="adm_list" id="topics_list"></ul>
+                </div>
+                <div class="adm_box">
+                    <h2 id="posts_title">Відповіді</h2>
+                    <ul class="adm_list" id="posts_list"></ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="adm_pane" id="pane_users" hidden>
+            <div class="adm_cols">
+                <div class="adm_box">
+                    <h2>Ролі за email</h2>
+                    <p class="adm_hint">Роль діє одразу, навіть якщо людина ще не зареєстрована: вона отримає її під час реєстрації або входу з цією поштою.</p>
+                    <form class="adm_form" id="staff_form" autocomplete="off">
+                        <input id="staff_email" type="email" placeholder="email@example.com" aria-label="Email" required>
+                        <select id="staff_role" aria-label="Роль">
+                            <option value="vip">VIP</option>
+                            <option value="admin">Адмін</option>
+                        </select>
+                        <button class="adm_btn" type="submit">Додати</button>
+                    </form>
+                    <ul class="adm_list" id="staff_list"></ul>
+                </div>
+                <div class="adm_box">
+                    <h2>Користувачі</h2>
+                    <ul class="adm_list" id="users_list"></ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/api.js?v=4"></script>
+    <script src="../js/admin.js?v=3"></script>
+</body>
+</html>

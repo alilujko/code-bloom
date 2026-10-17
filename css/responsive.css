@@ -1,0 +1,226 @@
+/* =========================================================
+   Адаптація під телефони, планшети й великі екрани.
+   Підключається останньою на всіх сторінках, тому перекриває попередні стилі.
+   ========================================================= */
+
+/* ---------- Загальне ---------- */
+img, svg, video { max-width: 100%; }
+.header .avatar_link img { border-radius: 50%; object-fit: cover; }
+.menu_toggle { display: none; }
+
+/* Горизонтальні смуги прокрутки (розділи, кімнати, вкладки) — без видимого скролбару */
+.cats, #cats_list, .rooms_list, .tabs, .adm_tabs { scrollbar-width: none; }
+.cats::-webkit-scrollbar, #cats_list::-webkit-scrollbar, .rooms_list::-webkit-scrollbar,
+.tabs::-webkit-scrollbar, .adm_tabs::-webkit-scrollbar { display: none; }
+
+/* Кнопка «Вийти» в профілі: прозора з червоною рамкою (раніше перекривалась синім фоном) */
+.btn_p.btn_p_danger { color: #ff6b61; background: transparent !important; border: 1px solid rgba(255, 69, 58, 0.7); }
+.btn_p.btn_p_danger:hover { background: rgba(255, 69, 58, 0.2) !important; }
+
+/* ---------- Профіль: фото й редагування ---------- */
+.profile_avatar_wrap { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.avatar_pick { position: relative; padding: 0; background: none; border: none; border-radius: 50%; cursor: pointer; }
+.avatar_pick:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+.avatar_pick .profile_avatar { display: block; }
+.avatar_cam {
+    position: absolute; right: 2px; bottom: 2px; display: grid; place-items: center;
+    width: 36px; height: 36px; color: #fff; background: var(--accent); border: 3px solid var(--panel); border-radius: 50%;
+    transition: transform 0.2s;
+}
+.avatar_pick:hover .avatar_cam { transform: scale(1.1); }
+.avatar_cam svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linejoin: round; }
+.p_link { padding: 4px 8px; font: inherit; font-size: 13px; color: var(--muted); background: none; border: none; cursor: pointer; text-decoration: underline; }
+.p_link:hover { color: #ff6b61; }
+
+.profile_nick .role_badge { font-size: 12px; margin-right: 8px; }
+.profile_info dd { display: flex; align-items: center; justify-content: flex-end; gap: 10px; flex-wrap: wrap; }
+.p_edit {
+    padding: 4px 12px; font: inherit; font-size: 13px; font-weight: 600; color: var(--accent);
+    background: var(--accent-soft); border: none; border-radius: 999px; cursor: pointer;
+}
+.p_edit:hover { filter: brightness(1.2); }
+
+.nick_form { margin: 4px 0 0; text-align: left; }
+.nick_form[hidden] { display: none; }
+.nick_form label { display: block; margin: 0 0 6px; font-size: 14px; font-weight: 600; }
+.nick_row { display: flex; flex-wrap: wrap; gap: 8px; }
+.nick_row input {
+    flex: 1 1 180px; min-width: 0; height: 44px; padding: 0 14px; box-sizing: border-box;
+    font: inherit; font-size: 16px; color: var(--ink); background: var(--accent-soft);
+    border: 1px solid var(--line); border-radius: 12px; outline: none;
+}
+.nick_row input:focus { border-color: var(--accent); }
+.nick_row .btn_p { cursor: pointer; font-family: inherit; }
+.nick_form small { display: block; margin-top: 6px; color: var(--muted); font-size: 13px; line-height: 1.4; }
+.p_msg { min-height: 20px; margin: 10px 0 0; font-size: 14px; color: var(--leaf); text-align: left; }
+.p_msg.bad { color: #ff6b61; }
+
+@media (min-width: 901px) {
+    #profile .profile_avatar_wrap { grid-column: 1; grid-row: 1; justify-self: center; }
+    #profile .profile_main { grid-column: 2; grid-row: 1 / span 3; min-width: 0; }
+}
+
+/* ---------- Планшети й невеликі ноутбуки (901–1199px) ---------- */
+@media (min-width: 901px) and (max-width: 1199px) {
+    html { zoom: 1; }
+    body { padding-left: 240px; }
+    .header { width: 240px; height: 100vh !important; }
+    .header .logo_img { height: 28px; }
+    .header .logo_img + .logo_img { height: 19px; }
+    .sidebar_toggle { left: 196px; }
+    .main_chat { height: calc(100vh - 80px) !important; }
+    .forum { min-height: calc(100vh - 88px) !important; }
+    .topics { grid-template-columns: 1fr !important; }
+    .profile_card#profile { grid-template-columns: 220px minmax(0, 1fr); column-gap: 28px; }
+    .block:not(#features) .chips { grid-template-columns: repeat(3, 1fr) !important; }
+    .page_content { gap: 40px; }
+    .page_content::before { font-size: 34px; max-width: 300px; }
+}
+
+/* ---------- Великі екрани ---------- */
+@media (min-width: 1800px) {
+    .main_chat, .forum { max-width: 1500px; margin-left: auto !important; margin-right: auto !important; }
+}
+
+/* ---------- Телефони й вузькі вікна (до 900px) ---------- */
+@media (max-width: 900px) {
+    html { zoom: 1; }
+    body { padding-left: 0 !important; overflow-x: hidden; }
+    .sidebar_toggle { display: none !important; }
+
+    /* Шапка: логотип + кнопка меню; навігація розгортається під нею */
+    .header {
+        position: sticky; top: 0; z-index: 100;
+        display: flex !important; flex-wrap: wrap; align-items: center;
+        width: 100%; height: auto !important; min-height: 60px;
+        padding: 8px 16px !important; gap: 0 !important; box-sizing: border-box;
+        border-right: none; border-bottom: 1px solid var(--line);
+    }
+    .header .left_part { flex: 1 1 auto; height: 44px; align-items: center; justify-content: space-between; width: 100%; }
+    .header .logo_div { padding-left: 0; }
+    .header .logo_img { height: 30px; }
+    .header .logo_img + .logo_img { display: inline-block !important; height: 22px; }
+
+    .menu_toggle {
+        display: grid; place-items: center; flex: none; width: 44px; height: 44px; padding: 0;
+        color: var(--ink); background: var(--line); border: none; border-radius: 12px; cursor: pointer;
+    }
+    .menu_toggle svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+    .menu_toggle path { transition: transform 0.25s, opacity 0.2s; transform-origin: center; }
+    html.nav-open .menu_toggle .m1 { transform: translateY(5px) rotate(45deg); }
+    html.nav-open .menu_toggle .m2 { opacity: 0; }
+    html.nav-open .menu_toggle .m3 { transform: translateY(-5px) rotate(-45deg); }
+
+    .header .middle_part, .header .right_part { display: none !important; }
+    html.nav-open .header .middle_part {
+        display: flex !important; flex: none; flex-direction: column; align-items: stretch;
+        width: 100%; height: auto; gap: 4px; padding: 12px 0 6px;
+    }
+    html.nav-open .header .header_link { display: block; font-size: 17px; padding: 12px 16px; }
+    html.nav-open .header .right_part {
+        display: flex !important; flex: none; flex-wrap: wrap; align-items: center;
+        width: 100%; height: auto; gap: 10px; padding: 12px 0 6px; border-top: 1px solid var(--line);
+    }
+    html.nav-open .header .search_input { display: block !important; flex: 1 1 100%; width: 100% !important; height: 44px; font-size: 16px; }
+    html.nav-open .header .avatar_link img { width: 44px; height: 44px; }
+    html.nav-open .header .logout { flex: 1; height: 44px; border-radius: 12px; }
+    html.nav-open .header .theme_switch { width: 44px; height: 44px; margin: 0; border-radius: 12px; }
+
+    /* Поля вводу 16px — інакше iPhone збільшує сторінку при фокусі */
+    input, textarea, select { font-size: 16px !important; }
+
+    /* Головна */
+    .hero_wrap { grid-template-columns: 1fr !important; gap: 8px; padding: 0 16px !important; }
+    .hero { margin: 32px 0 8px !important; padding: 0 !important; }
+    .hero-title { font-size: clamp(44px, 13vw, 72px) !important; white-space: normal !important; letter-spacing: -0.04em; }
+    .hero-right p { font-size: 17px; }
+    .phone_img { order: 0 !important; padding: 0 0 12px; }
+    .phone_img img { width: min(100%, 380px) !important; max-width: 100% !important; margin: 0 auto !important; transform: none !important; }
+    .auth-buttons { flex-wrap: wrap; }
+    .block { padding: 44px 16px 8px !important; }
+    #features .card, #features .card:first-child { padding: 22px; }
+    #features .card:first-child h3 { font-size: 26px; }
+    .block:not(#features) .chips { display: flex !important; flex-wrap: wrap; gap: 10px; }
+    .chip { padding: 12px 20px !important; font-size: 16px !important; }
+    .cta { width: calc(100% - 32px) !important; margin: 40px auto !important; padding: 36px 22px !important; text-align: left; }
+
+    /* Чат: кімнати смугою зверху, повідомлення на всю висоту екрана */
+    .main_chat + *, main { box-sizing: border-box; }
+    main:has(.main_chat) { padding: 10px !important; }
+    .main_chat { flex-direction: column !important; height: calc(100dvh - 60px - 20px) !important; min-height: 380px; }
+    .rooms { width: 100% !important; flex-direction: row; border: none !important; border-bottom: 1px solid var(--line) !important; }
+    .rooms_title { display: none; }
+    .rooms_list { flex-direction: row; padding: 10px; overflow-x: auto; overflow-y: hidden; }
+    .room { width: auto !important; flex: none; padding: 8px 14px 8px 8px; }
+    .room_last, .room_badge { display: none; }
+    .chat_head { padding: 12px 14px; }
+    .chat_massages { padding: 14px 12px; }
+    .bubble { max-width: 85%; }
+    .composer { padding: 10px; gap: 8px; }
+    .massage_input { min-width: 0; }
+
+    /* Форум */
+    main:has(.forum) { padding: 10px !important; }
+    .forum { flex-direction: column !important; gap: 10px; }
+    .cats { width: auto !important; display: flex; align-items: center; padding: 10px 12px !important; overflow-x: auto; border-radius: 16px !important; }
+    .cats h2 { display: none; }
+    #cats_list { display: flex; gap: 6px; }
+    .cat { width: auto !important; flex: none; padding: 8px 14px; white-space: nowrap; }
+    .cat .count, .cat .ic { display: none; }
+    .board { border-radius: 16px !important; }
+    .toolbar { flex-wrap: wrap; gap: 10px; padding: 16px; }
+    .toolbar h1 { flex: 1 1 100%; font-size: 22px; }
+    .tabs { flex: 1 1 auto; overflow-x: auto; }
+    .tab { white-space: nowrap; }
+    .btn_new { flex: 1 1 auto; }
+    .filter { padding: 0 16px !important; }
+    .topics { grid-template-columns: 1fr !important; padding: 12px 16px 16px !important; }
+    .topic { gap: 12px; padding: 14px; }
+    .stats { display: none; }
+    dialog { width: calc(100% - 20px) !important; max-width: 640px; max-height: calc(100dvh - 20px); margin: auto; }
+    .dlg { max-height: calc(100dvh - 20px); }
+    .dlg_foot { gap: 8px; }
+
+    /* Вхід / реєстрація */
+    .page_content { padding: 24px 16px !important; }
+    .page_content::before { display: none; }
+    .register_card { width: 100% !important; max-width: 460px; margin: 0 auto !important; box-sizing: border-box; }
+
+    /* Інструкція */
+    .doc { padding-left: 16px !important; padding-right: 16px !important; }
+    .doc > .steps { grid-template-columns: 1fr !important; }
+
+    /* Профіль */
+    .profile_page { padding: 24px 12px 40px; }
+    .profile_card { padding: 28px 18px; }
+    .profile_info div { flex-wrap: wrap; }
+    .profile_actions .btn_p { flex: 1 1 140px; text-align: center; }
+
+    /* Адмінка */
+    .admin { padding: 20px 12px 48px !important; }
+    .admin h1 { font-size: 24px; }
+    .adm_tabs { overflow-x: auto; }
+    .adm_tab { white-space: nowrap; }
+    .adm_cols { grid-template-columns: 1fr !important; }
+    .adm_box { padding: 16px; }
+    .adm_form { flex-wrap: wrap; }
+    .adm_form input { flex: 1 1 160px; }
+    .adm_list li { flex-wrap: wrap; }
+    .adm_actions { width: 100%; justify-content: flex-start; }
+}
+
+/* ---------- Маленькі телефони (до 380px) ---------- */
+@media (max-width: 380px) {
+    .header { padding: 8px 12px !important; }
+    .header .logo_img + .logo_img { display: none !important; }
+    .hero-title { font-size: 40px !important; }
+    .btn { width: 100%; text-align: center; box-sizing: border-box; }
+    .profile_info div { flex-direction: column; gap: 4px; }
+    .profile_info dd { justify-content: flex-start; text-align: left; }
+}
+
+/* ---------- Телефон горизонтально: невисокий екран ---------- */
+@media (max-width: 900px) and (max-height: 500px) {
+    .header { position: static; }
+    .main_chat { height: calc(100dvh - 20px) !important; min-height: 300px; }
+}

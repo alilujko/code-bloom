@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чат — Code Bloom</title>
+    <link rel="stylesheet" href="../css/chat.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/theme.css?v=3">
+    <script src="../js/theme.js?v=4"></script>
+    <script src="../js/session.js?v=4"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap">
+    <script src="../js/sidebar.js?v=4"></script>
+    <link rel="stylesheet" href="../css/human.css">
+    <link rel="stylesheet" href="../css/responsive.css?v=4">
+  </head>
+<body>
+    <div class="header">
+        <div class="left_part">
+            <div class="logo_div">
+                <a href="index.html"><img class="logo_img" src="../images/logo_main.png" alt=""> <img class="logo_img" src="../images/logo_text_main.png" alt=""></a>
+            </div>
+        </div>
+        <div class="middle_part">
+            <a class="header_link" href="index.html">Головна</a>
+            <a class="header_link" href="chat.html" aria-current="page">Чат</a>
+            <a class="header_link" href="forum.html">Форум</a>
+            <a class="header_link" href="ins.html">Інструкція</a>
+            <a class="header_link" href="profile.html">Профіль</a>
+        </div>
+        <div class="right_part">
+            <input class="search_input" type="search" placeholder="    Search...">
+            <a class="avatar_link user-only" href="profile.html" aria-label="Профіль"><img height="60px" src="../images/images.png" alt=""></a>
+            <button class="logout user-only js-logout" type="button">Вийти</button>
+            <button class="theme_switch">🌓</button>
+        </div>
+    </div>
+
+    <main>
+        <div class="main_chat">
+            <aside class="rooms">
+                <h2 class="rooms_title">Чати</h2>
+                <div class="rooms_list" id="rooms"></div>
+            </aside>
+
+            <section class="chat_view">
+                <div class="chat_head">
+                    <div class="room_icon" id="head_icon"></div>
+                    <div>
+                        <div class="chat_title" id="head_title"></div>
+                        <div class="chat_status" id="head_status"></div>
+                    </div>
+                </div>
+
+                <div class="chat_massages" id="messages" aria-live="polite"></div>
+
+                <form class="composer" id="composer" autocomplete="off">
+                    <input type="text" class="massage_input" placeholder="Massage..." aria-label="Massage">
+                    <button class="send" type="submit" aria-label="Надіслати">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+                    </button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <script src="../js/api.js?v=4"></script>
+    <script src="../js/chat.js?v=5"></script>
+</body>
+</html>

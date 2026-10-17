@@ -1,0 +1,127 @@
+/* Світла тема. Темна — це оригінальний вигляд сторінок. Хедер лишається темним в обох темах. */
+
+body { transition: background-color 0.3s, color 0.3s; }
+
+html[data-theme="light"] body {
+    color: #0b1220;
+    background-color: #f2f5fb;
+    background-image:
+        radial-gradient(55% 45% at 0% 0%, rgba(42, 143, 255, 0.28), transparent 70%),
+        radial-gradient(50% 45% at 100% 100%, rgba(0, 87, 255, 0.2), transparent 70%),
+        radial-gradient(35% 30% at 100% 0%, rgba(110, 180, 255, 0.2), transparent 70%);
+    background-attachment: fixed;
+}
+
+/* ---------- Головна ---------- */
+html[data-theme="light"] .hero-title { color: #0b1220; }
+html[data-theme="light"] .hero-right h2 { color: #0b1220; }
+html[data-theme="light"] .hero-right p { color: #4b5563; }
+
+html[data-theme="light"] .btn-login {
+    color: #0b1220;
+    border-color: rgba(11, 18, 32, 0.6);
+}
+
+html[data-theme="light"] .btn-login:hover {
+    color: #fff;
+    background-color: #0b1220;
+    border-color: #0b1220;
+}
+
+/* ---------- Чат ---------- */
+html[data-theme="light"] .main_chat {
+    background: rgba(255, 255, 255, 0.72);
+    border-color: rgba(11, 18, 32, 0.1);
+    box-shadow: 0 40px 80px -40px rgba(11, 40, 100, 0.35);
+}
+
+html[data-theme="light"] .rooms {
+    background: rgba(255, 255, 255, 0.55);
+    border-color: rgba(11, 18, 32, 0.1);
+}
+
+html[data-theme="light"] .room:hover { background: rgba(11, 18, 32, 0.06); }
+html[data-theme="light"] .room.active { color: #fff; }
+html[data-theme="light"] .room_last { color: #6b7280; }
+html[data-theme="light"] .room.active .room_last { color: rgba(255, 255, 255, 0.85); }
+html[data-theme="light"] .chat_head,
+html[data-theme="light"] .composer { border-color: rgba(11, 18, 32, 0.1); }
+html[data-theme="light"] .chat_status { color: #6b7280; }
+html[data-theme="light"] .chat_day { color: #8b93a1; }
+html[data-theme="light"] .bubble_in { background: #e6e9f0; color: #0b1220; }
+
+html[data-theme="light"] .massage_input {
+    color: #0b1220;
+    background: rgba(11, 18, 32, 0.06);
+}
+
+html[data-theme="light"] .massage_input:focus { background: #fff; }
+html[data-theme="light"] .massage_input::placeholder { color: #8b93a1; }
+
+/* ---------- Реєстрація ---------- */
+html[data-theme="light"] .register_card {
+    color: #0b1220;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-color: rgba(42, 143, 255, 0.3);
+    box-shadow: 0 30px 80px rgba(11, 40, 100, 0.2);
+}
+
+html[data-theme="light"] .register_subtitle,
+html[data-theme="light"] .divider,
+html[data-theme="light"] .login_text { color: #5b6577; }
+
+html[data-theme="light"] .social_button {
+    color: #0b1220;
+    background-color: #fff;
+    border-color: rgba(11, 18, 32, 0.12);
+}
+
+html[data-theme="light"] .social_button:hover {
+    background-color: #eef4ff;
+    border-color: #1a7bff;
+}
+
+/* іконка GitHub біла — у світлій темі інвертуємо */
+html[data-theme="light"] .social_button img[alt="GitHub"] { filter: invert(1); }
+
+html[data-theme="light"] .divider_line { background-color: rgba(11, 18, 32, 0.12); }
+html[data-theme="light"] .form_label { color: #3b4556; }
+
+html[data-theme="light"] .form_input {
+    color: #0b1220;
+    background-color: #fff;
+    border-color: rgba(11, 18, 32, 0.15);
+}
+
+html[data-theme="light"] .form_input::placeholder { color: #9aa3b2; }
+html[data-theme="light"] .terms_text { color: #6b7280; }
+html[data-theme="light"] .terms_text a { color: #3b4556; }
+html[data-theme="light"] .login_text { border-top-color: rgba(11, 18, 32, 0.1); }
+html[data-theme="light"] .background_decor { opacity: 0.3; }
+
+/* ---------- Хедер у світлій темі: щільніший темний, щоб логотип і пошук читалися ---------- */
+html[data-theme="light"] .header {
+    background: rgba(8, 12, 24, 0.94);
+    box-shadow: 0 8px 30px -12px rgba(11, 40, 100, 0.5);
+}
+
+/* ---------- Головна: нові секції у світлій темі ---------- */
+html[data-theme="light"] .block-title,
+html[data-theme="light"] .card h3,
+html[data-theme="light"] .cta h2 { color: #0b1220; }
+html[data-theme="light"] .block-sub,
+html[data-theme="light"] .card p,
+html[data-theme="light"] .cta p { color: #4b5563; }
+html[data-theme="light"] .card { background: rgba(255, 255, 255, 0.75); border-color: rgba(11, 18, 32, 0.1); }
+html[data-theme="light"] .chip { color: #0a5fd0; }
+html[data-theme="light"] .chip:hover { color: #fff; }
+html[data-theme="light"] .cta { background: radial-gradient(70% 120% at 50% 0%, rgba(42, 143, 255, 0.25), rgba(255, 255, 255, 0.8)); }
+html[data-theme="light"] .footer { border-top-color: rgba(11, 18, 32, 0.12); }
+html[data-theme="light"] .footer-links a { color: #4b5563; }
+html[data-theme="light"] .footer-copy { color: #8b93a1; }
+html[data-theme="light"] .footer-brand img + img { filter: brightness(0.25) saturate(1.4); }
+
+/* Префікси ролей у чаті, форумі та адмінці */
+.role_badge { display: inline-block; margin-right: 6px; padding: 1px 7px; font-size: 10px; font-weight: 800; letter-spacing: 0.06em; line-height: 1.5; vertical-align: middle; border-radius: 999px; opacity: 1; }
+.role_admin { color: #fff; background: #ff453a; }
+.role_vip { color: #3a2400; background: linear-gradient(135deg, #ffd60a, #ff9f0a); }

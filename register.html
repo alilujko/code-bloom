@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Реєстрація — Code Bloom</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial;
+            color: white;
+            background-color: black;
+            overflow-x: hidden;
+        }
+
+        /* ---------- Хедер ---------- */
+
+        .header {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 100px;
+            background-color: rgb(31, 31, 255);
+            display: flex;
+        }
+
+        .left_part {
+            display: flex;
+            flex: 1;
+            height: 100%;
+            background-color: black;
+            flex-direction: row;
+        }
+
+        .middle_part {
+            display: flex;
+            flex: 2;
+            height: 100%;
+            background-color: black;
+            align-items: center;
+            justify-content: center;
+            gap: 4%;
+        }
+
+        .right_part {
+            display: flex;
+            flex: 1;
+            height: 100%;
+            background-color: black;
+            align-items: center;
+            gap: 10%;
+        }
+
+        .logo_img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo_div {
+            display: flex;
+            align-items: center;
+            padding-left: 1.1%;
+        }
+
+        .logo_div a {
+            display: flex;
+            align-items: center;
+        }
+
+        .header_link {
+            position: relative;
+            display: inline-block;
+            font-size: 30px;
+            color: rgb(42, 143, 255);
+            text-decoration: none;
+            padding-bottom: 4px;
+            transition: color 0.3s;
+        }
+
+        .header_link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            border-radius: 2px;
+            background-color: rgb(42, 143, 255);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .header_link:hover {
+            color: rgb(110, 180, 255);
+        }
+
+        .header_link:hover::after {
+            transform: scaleX(1);
+        }
+
+        .search_input {
+            height: 45%;
+            width: 70%;
+        }
+
+        .theme_switch {
+            width: 40px;
+            height: 40px;
+            margin-left: -10px;
+            background-color: rgb(42, 143, 255);
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* ---------- Фон ---------- */
+
+        .background_decor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+        }
+
+        .glow_top_left {
+            width: 520px;
+            height: 520px;
+            top: -220px;
+            left: -160px;
+            background-color: #0b4fd6;
+            opacity: 0.55;
+        }
+
+        .glow_bottom_right {
+            width: 600px;
+            height: 600px;
+            bottom: -300px;
+            right: -200px;
+            background-color: #0a3fb0;
+            opacity: 0.45;
+        }
+
+        .glow_center {
+            width: 300px;
+            height: 300px;
+            top: 40%;
+            left: 55%;
+            background-color: #1a7bff;
+            opacity: 0.15;
+        }
+
+        .wave_line {
+            position: absolute;
+            left: -20%;
+            width: 140%;
+            height: 300px;
+            border-top: 2px solid rgba(26, 123, 255, 0.7);
+            border-radius: 50%;
+        }
+
+        .wave_bottom {
+            top: 60%;
+        }
+
+        .wave_top {
+            top: -150px;
+            opacity: 0.5;
+        }
+
+        .code_sign {
+            position: absolute;
+            font-size: 44px;
+            font-weight: bold;
+            color: #2b62e6;
+            opacity: 0.7;
+        }
+
+        .code_sign_left {
+            top: 22%;
+            left: 6%;
+        }
+
+        .code_sign_right {
+            top: 22%;
+            right: 5%;
+        }
+
+        .star {
+            position: absolute;
+            font-size: 40px;
+            color: #2b62e6;
+        }
+
+        .star_left {
+            bottom: 14%;
+            left: 4%;
+        }
+
+        .star_right {
+            bottom: 20%;
+            right: 6%;
+        }
+
+        .code_window {
+            position: absolute;
+            top: 40%;
+            width: 240px;
+            opacity: 0.55;
+        }
+
+        .code_window_left {
+            left: 2%;
+            transform: rotate(-8deg);
+        }
+
+        .code_window_right {
+            right: 2%;
+            transform: rotate(8deg);
+        }
+
+        .window_dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin-right: 6px;
+            margin-bottom: 14px;
+            border-radius: 50%;
+            background-color: #3b6fff;
+        }
+
+        .code_line {
+            height: 6px;
+            margin: 11px 0;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #1a5fff, #0b2c80);
+        }
+
+        /* ---------- Сторінка ---------- */
+
+        .page_content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 100px);
+            padding: 40px 16px;
+        }
+
+        /* ---------- Картка реєстрації ---------- */
+
+        .register_card {
+            width: 100%;
+            max-width: 420px;
+            padding: 36px 34px 28px;
+            font-family: 'Inter', Arial, sans-serif;
+            color: #f2f5fb;
+            background-color: rgba(10, 16, 32, 0.75);
+            border: 1px solid rgba(26, 123, 255, 0.35);
+            border-radius: 24px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(18px);
+        }
+
+        .register_title {
+            margin: 0;
+            font-size: 30px;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        .register_subtitle {
+            margin: 8px 0 0;
+            font-size: 15px;
+            color: #8a94a8;
+            text-align: center;
+        }
+
+        .social_buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 28px;
+        }
+
+        .social_button {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            height: 48px;
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 600;
+            color: #f2f5fb;
+            background-color: #0a0f1c;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: border-color 0.2s, background-color 0.2s;
+        }
+
+        .social_button:hover {
+            border-color: #1a7bff;
+            background-color: #0d1528;
+        }
+
+        .social_icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: 26px 0;
+            font-size: 13px;
+            color: #8a94a8;
+        }
+
+        .divider_line {
+            flex: 1;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .form_field {
+            margin-bottom: 14px;
+        }
+
+        .form_label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #c2cadb;
+        }
+
+        .form_input {
+            width: 100%;
+            height: 50px;
+            padding: 0 16px;
+            font-family: inherit;
+            font-size: 15px;
+            color: #f2f5fb;
+            background-color: #0a0f1c;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .form_input::placeholder {
+            color: #4f5a70;
+        }
+
+        .form_input:focus {
+            border-color: #1a7bff;
+            box-shadow: 0 0 0 4px rgba(26, 123, 255, 0.18);
+        }
+
+        .register_button {
+            width: 100%;
+            height: 54px;
+            margin-top: 8px;
+            font-family: inherit;
+            font-size: 17px;
+            font-weight: 700;
+            color: white;
+            background: linear-gradient(135deg, #2b8aff, #1466f0);
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(26, 123, 255, 0.45);
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.2s;
+        }
+
+        .register_button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 40px rgba(26, 123, 255, 0.45);
+        }
+
+        .terms_text {
+            margin: 14px 0 0;
+            font-size: 12px;
+            line-height: 1.5;
+            color: #5f6a80;
+            text-align: center;
+        }
+
+        .terms_text a {
+            color: #8a94a8;
+        }
+
+        .login_text {
+            margin: 22px 0 0;
+            padding-top: 20px;
+            font-size: 15px;
+            color: #8a94a8;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .login_text a {
+            font-weight: 600;
+            color: #3d8bff;
+            text-decoration: none;
+        }
+
+        .login_text a:hover {
+            text-decoration: underline;
+        }
+
+        /* ---------- Адаптив ---------- */
+
+        @media (max-width: 960px) {
+            .code_window,
+            .code_sign {
+                display: none;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .register_card {
+                padding: 30px 20px 26px;
+            }
+
+            .social_buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/theme.css?v=3">
+    <link rel="stylesheet" href="../css/auth.css">
+    <script src="../js/theme.js?v=4"></script>
+    <script src="../js/session.js?v=4"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap">
+    <script src="../js/sidebar.js?v=4"></script>
+    <link rel="stylesheet" href="../css/human.css">
+    <link rel="stylesheet" href="../css/responsive.css?v=4">
+  </head>
+<body>
+
+    <div class="header">
+        <div class="left_part">
+            <div class="logo_div">
+                <a href="index.html">
+                    <img class="logo_img" src="../images/logo_main.png" alt="">
+                    <img class="logo_img" src="../images/logo_text_main.png" alt="">
+                </a>
+            </div>
+        </div>
+        <div class="middle_part">
+            <a class="header_link" href="index.html">Головна</a>
+            <a class="header_link" href="chat.html">Чат</a>
+            <a class="header_link" href="forum.html">Форум</a>
+            <a class="header_link" href="ins.html">Інструкція</a>
+            <a class="header_link" href="profile.html">Профіль</a>
+        </div>
+        <div class="right_part">
+            <input class="search_input" type="search" placeholder="    Search...">
+            <a class="avatar_link user-only" href="profile.html" aria-label="Профіль"><img height="60px" src="../images/images.png" alt=""></a>
+            <button class="logout user-only js-logout" type="button">Вийти</button>
+            <button class="theme_switch">🌓</button>
+        </div>
+    </div>
+
+    <div class="background_decor">
+        <div class="glow glow_top_left"></div>
+        <div class="glow glow_bottom_right"></div>
+        <div class="glow glow_center"></div>
+
+        <div class="wave_line wave_top"></div>
+        <div class="wave_line wave_bottom"></div>
+
+        <div class="code_sign code_sign_left">&lt;/&gt;</div>
+        <div class="code_sign code_sign_right">&lt;/&gt;</div>
+
+        <div class="star star_left">✦</div>
+        <div class="star star_right">✦</div>
+
+        <div class="code_window code_window_left">
+            <span class="window_dot"></span>
+            <span class="window_dot"></span>
+            <span class="window_dot"></span>
+            <div class="code_line" style="width: 70%;"></div>
+            <div class="code_line" style="width: 90%; margin-left: 20px;"></div>
+            <div class="code_line" style="width: 55%; margin-left: 20px;"></div>
+            <div class="code_line" style="width: 80%; margin-left: 40px;"></div>
+            <div class="code_line" style="width: 60%; margin-left: 40px;"></div>
+            <div class="code_line" style="width: 45%;"></div>
+        </div>
+
+        <div class="code_window code_window_right">
+            <span class="window_dot"></span>
+            <span class="window_dot"></span>
+            <span class="window_dot"></span>
+            <div class="code_line" style="width: 60%;"></div>
+            <div class="code_line" style="width: 85%; margin-left: 20px;"></div>
+            <div class="code_line" style="width: 70%; margin-left: 40px;"></div>
+            <div class="code_line" style="width: 50%; margin-left: 40px;"></div>
+            <div class="code_line" style="width: 40%;"></div>
+        </div>
+    </div>
+
+    <div class="page_content">
+        <div class="register_card">
+            <h1 class="register_title">Створити акаунт</h1>
+            <p class="register_subtitle">Заповни форму, щоб почати</p>
+
+            <div class="social_buttons">
+                <button class="social_button">
+                    <img class="social_icon" src="https://cdn.simpleicons.org/github/ffffff" alt="GitHub">
+                    GitHub
+                </button>
+                <button class="social_button">
+                    <img class="social_icon" src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+                    Google
+                </button>
+            </div>
+
+            <div class="divider">
+                <div class="divider_line"></div>
+                або через email
+                <div class="divider_line"></div>
+            </div>
+
+            <form>
+                <div class="form_field">
+                    <label class="form_label" for="nickname">Нікнейм</label>
+                    <input class="form_input" id="nickname" type="text" placeholder="coder_2026">
+                </div>
+
+                <div class="form_field">
+                    <label class="form_label" for="email">Email</label>
+                    <input class="form_input" id="email" type="email" placeholder="you@example.com">
+                </div>
+
+                <div class="form_field">
+                    <label class="form_label" for="password">Пароль</label>
+                    <input class="form_input" id="password" type="password" placeholder="Мінімум 8 символів">
+                </div>
+
+                <button class="register_button" type="button">Зареєструватись</button>
+
+                <p class="terms_text">
+                    Реєструючись, ти погоджуєшся з <a href="#">Правилами</a> та <a href="#">Політикою конфіденційності</a>
+                </p>
+            </form>
+
+            <p class="login_text">Вже маєш акаунт? <a href="login.html">Увійти</a></p>
+        </div>
+    </div>
+
+    <script src="../js/auth.js?v=4"></script>
+</body>
+</html>

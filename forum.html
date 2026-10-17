@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форум — Code Bloom</title>
+    <link rel="stylesheet" href="../css/forum.css?v=3">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/theme.css?v=3">
+    <script src="../js/theme.js?v=4"></script>
+    <script src="../js/session.js?v=4"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap">
+    <script src="../js/sidebar.js?v=4"></script>
+    <link rel="stylesheet" href="../css/human.css">
+    <link rel="stylesheet" href="../css/responsive.css?v=4">
+  </head>
+<body>
+    <div class="header">
+        <div class="left_part">
+            <div class="logo_div">
+                <a href="index.html"><img class="logo_img" src="../images/logo_main.png" alt=""> <img class="logo_img" src="../images/logo_text_main.png" alt=""></a>
+            </div>
+        </div>
+        <div class="middle_part">
+            <a class="header_link" href="index.html">Головна</a>
+            <a class="header_link" href="chat.html">Чат</a>
+            <a class="header_link" href="forum.html" aria-current="page">Форум</a>
+            <a class="header_link" href="ins.html">Інструкція</a>
+            <a class="header_link" href="profile.html">Профіль</a>
+        </div>
+        <div class="right_part">
+            <input class="search_input" type="search" placeholder="    Search...">
+            <a class="avatar_link user-only" href="profile.html" aria-label="Профіль"><img height="60px" src="../images/images.png" alt=""></a>
+            <button class="logout user-only js-logout" type="button">Вийти</button>
+            <button class="theme_switch">🌓</button>
+        </div>
+    </div>
+
+    <main>
+        <div class="forum">
+            <aside class="cats">
+                <h2>Розділи</h2>
+                <div id="cats_list"></div>
+            </aside>
+
+            <section class="board">
+                <div class="toolbar">
+                    <h1 id="board_title">Усі теми</h1>
+                    <div class="tabs">
+                        <button class="tab active" type="button" data-sort="new">Нові</button>
+                        <button class="tab" type="button" data-sort="popular">Популярні</button>
+                        <button class="tab" type="button" data-sort="none">Без відповідей</button>
+                    </div>
+                    <button class="btn_new" id="btn_new" type="button">+ Нова тема</button>
+                </div>
+                <div class="filter"><input id="filter" type="search" placeholder="Пошук по темах..." aria-label="Пошук по темах"></div>
+                <div class="topics" id="topics"></div>
+            </section>
+        </div>
+    </main>
+
+    <dialog id="view">
+        <div class="dlg">
+            <div class="dlg_head"><h2 id="view_title"></h2><button class="close" type="button" aria-label="Закрити">✕</button></div>
+            <div class="dlg_body" id="view_body"></div>
+            <form class="dlg_foot" id="reply_form" autocomplete="off">
+                <input id="reply_text" type="text" placeholder="Ваша відповідь..." aria-label="Ваша відповідь">
+                <button class="btn_main" type="submit">Надіслати</button>
+            </form>
+        </div>
+    </dialog>
+
+    <dialog id="new">
+        <form class="dlg" id="new_form" autocomplete="off">
+            <div class="dlg_head"><h2>Нова тема</h2><button class="close" type="button" aria-label="Закрити">✕</button></div>
+            <div class="field"><label for="new_title">Заголовок</label><input id="new_title" type="text" placeholder="Про що хочеш поговорити?" required></div>
+            <div class="field"><label for="new_cat">Розділ</label><select id="new_cat"></select></div>
+            <div class="field"><label for="new_text">Опис</label><textarea id="new_text" placeholder="Розкажи детальніше..."></textarea></div>
+            <div class="dlg_actions"><button class="btn_main" type="submit">Опублікувати</button></div>
+        </form>
+    </dialog>
+
+    <script src="../js/api.js?v=4"></script>
+    <script src="../js/forum.js?v=3"></script>
+</body>
+</html>

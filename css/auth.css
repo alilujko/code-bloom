@@ -1,0 +1,13 @@
+.form_error {
+    min-height: 20px;
+    margin: 4px 0 10px;
+    font-size: 14px;
+    text-align: center;
+    color: #ff6b6b;
+}
+
+.register_button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+    transform: none;
+}

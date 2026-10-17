@@ -1,0 +1,371 @@
+body{
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial;
+    color: #f5f5f7;
+    background-color: black;
+    background-image: url("../images/background.png");
+    background-size: cover;
+    background-attachment: fixed;
+}
+.header {
+    width: 100%;
+    height: 100px;
+    background-color: rgb(31, 31, 255);
+    display: flex;
+}
+
+.left_part {
+    display: flex;
+    flex: 1;
+    height: 100%;
+    background-color: black;
+    flex-direction: row;
+}
+
+.middle_part {
+    display: flex;
+    flex: 2;
+    height: 100%;
+    background-color: rgb(0, 0, 0);
+    align-items: center;
+    justify-content: center;
+    gap: 4%;
+    box-sizing: border-box;
+}
+
+.right_part {
+    display: flex;
+    flex: 1;
+    height: 100%;
+    background-color: rgb(0, 0, 0);
+    align-items: center;
+    gap: 10%;
+}
+
+.logo_img {
+    height: 50px;
+    width: auto;
+}
+
+.logo_div {
+    display: flex;
+    align-items: center;
+    padding-left: 1.1%;
+    box-sizing: border-box;
+}
+
+.logo_div a {
+    display: flex;
+    align-items: center;
+}
+
+/* Лінки в хедері: без підкреслення, з плавною лінією при наведенні */
+.header_link {
+    position: relative;
+    display: inline-block;
+    font-size: 30px;
+    color: rgb(42, 143, 255);
+    text-decoration: none;
+    padding-bottom: 4px;
+    transition: color 0.3s;
+}
+
+.header_link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    border-radius: 2px;
+    background-color: rgb(42, 143, 255);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+}
+
+.header_link:hover {
+    color: rgb(110, 180, 255);
+}
+
+.header_link:hover::after {
+    transform: scaleX(1);
+}
+
+.search_input {
+    height: 45%;
+    width: 70%;
+}
+
+.theme_switch {
+    width: 40px;
+    height: 40px;
+    margin-left: -10px;
+    background-color: rgb(42, 143, 255);
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+/* ---------- Чат ---------- */
+
+main {
+    display: flex;
+    justify-content: center;
+    padding: 32px 24px 40px;
+}
+
+.main_chat {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    height: calc(100vh - 76px - 80px);
+    min-height: 520px;
+    overflow: hidden;
+    background: rgba(20, 24, 36, 0.62);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    backdrop-filter: blur(24px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 28px;
+    box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.8);
+}
+
+/* Бокова панель із чатами */
+.rooms {
+    flex: none;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.25);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.rooms_title {
+    margin: 0;
+    padding: 22px 22px 14px;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.rooms_list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0 10px 12px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.room {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 10px 12px;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    background: transparent;
+    border: 0;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.room:hover { background: rgba(255, 255, 255, 0.07); }
+.room.active { background: rgb(42, 143, 255); }
+
+.room_icon {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(145deg, #4aa3ff, #0057ff);
+    border-radius: 50%;
+}
+
+.room.active .room_icon { background: rgba(255, 255, 255, 0.22); }
+
+.room_text {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.room_name {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.room_last {
+    overflow: hidden;
+    font-size: 13px;
+    color: #a1a1a6;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.room.active .room_last { color: rgba(255, 255, 255, 0.8); }
+
+.room_badge {
+    flex: none;
+    min-width: 20px;
+    padding: 1px 6px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 18px;
+    text-align: center;
+    color: #fff;
+    background: rgb(42, 143, 255);
+    border-radius: 10px;
+}
+
+.room.active .room_badge { display: none; }
+
+/* Права частина — вікно чату */
+.chat_view {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat_head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chat_head .room_icon { width: 40px; height: 40px; font-size: 18px; }
+
+.chat_title { font-size: 17px; font-weight: 600; line-height: 1.2; }
+
+.chat_status { font-size: 13px; color: #a1a1a6; }
+
+.chat_status::before {
+    content: "";
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-right: 6px;
+    border-radius: 50%;
+    background: #30d158;
+}
+
+.chat_massages {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 24px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.chat_day {
+    align-self: center;
+    margin: 4px 0 12px;
+    font-size: 12px;
+    color: #6e6e73;
+}
+
+.bubble {
+    max-width: min(72%, 520px);
+    padding: 9px 16px;
+    font-size: 16px;
+    line-height: 1.35;
+    border-radius: 20px;
+    overflow-wrap: anywhere;
+    animation: pop 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.bubble_in {
+    align-self: flex-start;
+    background: #2c2c2e;
+    border-bottom-left-radius: 6px;
+}
+
+.bubble_out {
+    align-self: flex-end;
+    color: #fff;
+    background: rgb(42, 143, 255);
+    border-bottom-right-radius: 6px;
+}
+
+@keyframes pop {
+    from { opacity: 0; transform: translateY(10px) scale(0.96); }
+    to   { opacity: 1; transform: none; }
+}
+
+.composer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.massage_input {
+    flex: 1;
+    height: 44px;
+    padding: 0 20px;
+    font: inherit;
+    color: #f5f5f7;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid transparent;
+    border-radius: 22px;
+    outline: none;
+    transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.massage_input::placeholder { color: #6e6e73; }
+
+.massage_input:focus {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgb(42, 143, 255);
+    box-shadow: 0 0 0 4px rgba(42, 143, 255, 0.2);
+}
+
+.send {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    color: #fff;
+    background: rgb(42, 143, 255);
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.send:hover { background: rgb(74, 163, 255); }
+.send:active { transform: scale(0.92); }
+.send svg { width: 20px; height: 20px; }
+
+@media (max-width: 800px) {
+    main { padding: 12px; }
+    .main_chat { flex-direction: column; height: calc(100vh - 64px - 24px); }
+    .rooms { width: 100%; flex-direction: row; border-right: 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+    .rooms_title { display: none; }
+    .rooms_list { flex-direction: row; padding: 10px; overflow-x: auto; overflow-y: hidden; }
+    .room { width: auto; flex: none; padding: 8px 14px 8px 8px; }
+    .room_last, .room_badge { display: none; }
+    .bubble { max-width: 85%; }
+}
+
+.b_author { display: block; margin-bottom: 2px; font-size: 12px; opacity: 0.7; }

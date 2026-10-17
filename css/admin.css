@@ -1,0 +1,53 @@
+.admin { max-width: 1100px; margin: 0 auto; padding: 32px 16px 64px; color: #fff; }
+.admin[hidden], .adm_pane[hidden] { display: none; }
+.admin h1 { margin: 0 0 20px; font-size: 30px; }
+.adm_badge { margin-left: 10px; padding: 4px 12px; font-size: 13px; font-weight: 600; vertical-align: middle; background: rgba(255, 69, 58, 0.25); border: 1px solid rgba(255, 69, 58, 0.6); border-radius: 999px; }
+.adm_error { min-height: 20px; margin: 0 0 12px; color: #ff6b61; }
+
+.adm_tabs { display: flex; gap: 6px; margin-bottom: 20px; }
+.adm_tab { padding: 8px 20px; font: inherit; font-weight: 600; color: rgba(255, 255, 255, 0.75); background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 999px; cursor: pointer; }
+.adm_tab.active { color: #fff; background: rgb(42, 143, 255); border-color: rgb(42, 143, 255); }
+
+.adm_cols { display: grid; grid-template-columns: 1fr 1.4fr; gap: 20px; }
+.adm_box { padding: 20px; background: rgba(0, 0, 0, 0.6); border: 1px solid rgba(42, 143, 255, 0.25); border-radius: 18px; min-width: 0; }
+.adm_box h2 { margin: 0 0 14px; font-size: 18px; }
+
+.adm_form { display: flex; gap: 8px; margin-bottom: 14px; }
+.adm_form input { flex: 1; min-width: 0; height: 38px; padding: 0 14px; font: inherit; color: #fff; background: rgba(255, 255, 255, 0.08); border: 1px solid transparent; border-radius: 999px; outline: none; }
+.adm_form input:focus { border-color: rgb(42, 143, 255); }
+.adm_form .adm_icon_in { flex: none; width: 56px; text-align: center; padding: 0; }
+
+.adm_btn { height: 38px; padding: 0 18px; font: inherit; font-weight: 600; color: #fff; background: rgb(42, 143, 255); border: none; border-radius: 999px; cursor: pointer; }
+.adm_btn:hover { filter: brightness(1.12); }
+.adm_del { flex: none; padding: 5px 12px; font: inherit; font-size: 13px; color: #ff6b61; background: transparent; border: 1px solid rgba(255, 69, 58, 0.6); border-radius: 999px; cursor: pointer; }
+.adm_del:hover { background: rgba(255, 69, 58, 0.25); }
+
+.adm_list { list-style: none; margin: 0; padding: 0; max-height: 60vh; overflow-y: auto; }
+.adm_list li { display: flex; align-items: center; gap: 10px; padding: 10px 8px; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+.adm_list li.sel { background: rgba(42, 143, 255, 0.18); border-radius: 10px; }
+.adm_item { flex: 1; min-width: 0; padding: 0; font: inherit; text-align: left; color: inherit; background: none; border: none; cursor: pointer; }
+.adm_item.plain { cursor: default; }
+.adm_item b { display: block; word-break: break-word; }
+.adm_item small { display: block; color: rgba(255, 255, 255, 0.55); word-break: break-word; }
+.adm_empty { color: rgba(255, 255, 255, 0.5); }
+
+html[data-theme="light"] .admin { color: #0b1220; }
+html[data-theme="light"] .adm_box { background: rgba(255, 255, 255, 0.85); }
+html[data-theme="light"] .adm_tab, html[data-theme="light"] .adm_form input { color: #0b1220; }
+html[data-theme="light"] .adm_tab.active { color: #fff; }
+html[data-theme="light"] .adm_item small, html[data-theme="light"] .adm_empty { color: #4b5563; }
+html[data-theme="light"] .adm_list li { border-top-color: rgba(11, 18, 32, 0.1); }
+
+@media (max-width: 800px) { .adm_cols { grid-template-columns: 1fr; } }
+
+/* Модерація: кнопки дій, ролі, мут/бан */
+.adm_actions { display: flex; flex-wrap: wrap; gap: 6px; flex: none; justify-content: flex-end; }
+.adm_act { flex: none; padding: 5px 12px; font: inherit; font-size: 13px; color: #ffd60a; background: transparent; border: 1px solid rgba(255, 214, 10, 0.55); border-radius: 999px; cursor: pointer; }
+.adm_act:hover { background: rgba(255, 214, 10, 0.18); }
+.adm_state { margin-left: 6px; font-size: 12px; font-weight: 700; color: #ff6b61; }
+.adm_form select { flex: none; height: 38px; padding: 0 12px; font: inherit; color: #fff; background: rgba(255, 255, 255, 0.08); border: 1px solid transparent; border-radius: 999px; outline: none; }
+.adm_form select option { color: #000; }
+.adm_form label.adm_check { flex: none; display: flex; align-items: center; gap: 6px; font-size: 13px; white-space: nowrap; }
+.adm_hint { margin: 0 0 14px; font-size: 13px; color: rgba(255, 255, 255, 0.55); }
+html[data-theme="light"] .adm_hint { color: #4b5563; }
+html[data-theme="light"] .adm_act { color: #a15c00; border-color: rgba(161, 92, 0, 0.6); }

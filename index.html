@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Bloom</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/theme.css?v=3">
+    
+    <script src="../js/theme.js?v=4"></script>
+    <script src="../js/session.js?v=4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap">
+    <script src="../js/sidebar.js?v=4"></script>
+    <link rel="stylesheet" href="../css/human.css">
+    <link rel="stylesheet" href="../css/responsive.css?v=4">
+  </head>
+  <body>
+    <div class="header">
+        <div class="left_part">
+            <div class="logo_div">
+                <a href="index.html"><img class="logo_img" src="../images/logo_main.png" alt=""> <img class="logo_img" src="../images/logo_text_main.png" alt=""></a>
+            </div>
+        </div>
+        <div class="middle_part">
+            <a class="header_link" href="index.html" aria-current="page">Головна</a>
+            <a class="header_link" href="chat.html">Чат</a>
+            <a class="header_link" href="forum.html">Форум</a>
+            <a class="header_link" href="ins.html">Інструкція</a>
+            <a class="header_link" href="profile.html">Профіль</a>
+        </div>
+        <div class="right_part">
+            <input class="search_input" type="search" placeholder="    Search...">
+            <a class="avatar_link user-only" href="profile.html" aria-label="Профіль"><img height="60px" src="../images/images.png" alt=""></a>
+            <button class="logout user-only js-logout" type="button">Вийти</button>
+            <button class="theme_switch">🌓</button>
+        </div>
+    </div>
+    
+    <main>
+        <div class="hero_wrap">
+            <section class="hero">
+                <div class="hero-left">
+                    <p class="hero-badge">Для тих, хто вчиться та ділиться</p>
+                    <h1 class="hero-title">
+                        Code <span>Bloom</span>
+                    </h1>
+                </div>
+
+                <div class="hero-right">
+                    <h2>Більше ніж код — люди, з якими цікаво.</h2>
+                    <p>
+                        Твій простір для програмування, спілкування та розвитку.
+                        Ділись досвідом на форумі, спілкуйся в чаті,
+                        знаходь однодумців і створюй щось неймовірне разом із нами.
+                    </p>
+                </div>
+
+                <div class="auth-buttons guest-only">
+                    <a href="login.html" class="btn btn-login">Увійти</a>
+                    <a href="register.html" class="btn btn-register">Зареєструватись</a>
+                </div>
+                <div class="auth-buttons user-only">
+                    <a href="chat.html" class="btn btn-register">Відкрити чат</a>
+                    <a href="forum.html" class="btn btn-login">Перейти на форум</a>
+                </div>
+            </section>
+
+            <div class="phone_img">
+                <img src="../images/phone_main.webp" width="1100" height="825" alt="Code Bloom на телефоні">
+            </div>
+        </div>
+
+        <section class="block" id="features">
+            <h2 class="block-title">Все потрібне — <span>в одному місці</span></h2>
+            <p class="block-sub">Питай, відповідай, діліться знаннями — без зайвого шуму.</p>
+            <div class="cards">
+                <a class="card" href="chat.html">
+                    <span class="card-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/></svg></span>
+                    <h3>Чат</h3>
+                    <p>Живе спілкування з однодумцями. Обирай кімнату за темою — Python, JavaScript, дизайн та інші.</p>
+                    <span class="card-more">Відкрити чат</span>
+                </a>
+                <a class="card" href="forum.html">
+                    <span class="card-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z"/><path d="M8 9h8M8 12h5"/></svg></span>
+                    <h3>Форум</h3>
+                    <p>Став питання, ділись рішеннями та знаннями. Теми можна лайкати, шукати й обговорювати.</p>
+                    <span class="card-more">Перейти на форум</span>
+                </a>
+                <a class="card" href="ins.html">
+                    <span class="card-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3V4Z"/><path d="M9 8h6M9 12h6"/></svg></span>
+                    <h3>Інструкція</h3>
+                    <p>Короткий гід, який допоможе швидко освоїтись у Code Bloom за три прості кроки.</p>
+                    <span class="card-more">Читати</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="block">
+            <h2 class="block-title">З чого <span>почати?</span></h2>
+            <p class="block-sub">Обери тему, яка тобі близька, і заходь у розмову.</p>
+            <div class="chips">
+                <a class="chip" href="forum.html?cat=python">Python</a>
+                <a class="chip" href="forum.html?cat=js">JavaScript</a>
+                <a class="chip" href="forum.html?cat=design">Дизайн</a>
+                <a class="chip" href="forum.html?cat=help">Допомога</a>
+                <a class="chip" href="forum.html?cat=offtop">Офтоп</a>
+            </div>
+        </section>
+
+        <section class="cta">
+            <h2 class="guest-only">Готовий приєднатись?</h2>
+            <p class="guest-only">Створи акаунт за хвилину й стань частиною Code Bloom.</p>
+            <div class="auth-buttons cta-buttons guest-only">
+                <a href="register.html" class="btn btn-register">Зареєструватись</a>
+                <a href="ins.html" class="btn btn-login">Як це працює</a>
+            </div>
+            <h2 class="user-only">З поверненням, <span class="js-nick"></span>!</h2>
+            <p class="user-only">Обговорення й друзі вже чекають на тебе.</p>
+            <div class="auth-buttons cta-buttons user-only">
+                <a href="chat.html" class="btn btn-register">Відкрити чат</a>
+                <a href="forum.html" class="btn btn-login">Перейти на форум</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a class="footer-brand" href="index.html"><img src="../images/logo_main.png" alt=""> <img src="../images/logo_text_main.png" alt="Code Bloom"></a>
+        <nav class="footer-links" aria-label="Нижня навігація">
+            <a href="index.html">Головна</a>
+            <a href="chat.html">Чат</a>
+            <a href="forum.html">Форум</a>
+            <a href="ins.html">Інструкція</a>
+            <a class="guest-only" href="login.html">Увійти</a>
+            <a class="user-only js-logout" href="#">Вийти</a>
+        </nav>
+        <p class="footer-copy">© 2026 Code Bloom. Усі права захищено.</p>
+    </footer>
+    <script src="../js/script.js"></script>
+  </body>
+</html>
