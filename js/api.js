@@ -1,6 +1,12 @@
 // Спільний клієнт API (server/main.py на Vercel). Токен сесії лежить у localStorage.
 var CB = (function () {
-    var SERVER = 'https://code-bloom-server.vercel.app';
+    var SERVER = (function () {
+        try {
+            var custom = localStorage.getItem('api_server');
+            if (custom) return custom.replace(/\/+$/, '');
+        } catch (e) {}
+        return 'https://code-bloom-server.vercel.app';
+    })();
 
     function get(key) { try { return localStorage.getItem(key); } catch (e) { return null; } }
 
@@ -10,7 +16,11 @@ var CB = (function () {
         if (token) headers.Authorization = 'Bearer ' + token;
         var res;
         try {
-            res = await fetch(SERVER + path, { method: method, headers: headers, body: body ? JSON.stringify(body) : undefined });
+            res = await fetch(SERVER + path, {
+                method: method,
+                headers: headers,
+                body: body ? JSON.stringify(body) : undefined
+            });
         } catch (e) {
             throw new Error('Сервер недоступний. Перевір https://code-bloom-server.vercel.app/');
         }
@@ -34,7 +44,6 @@ var CB = (function () {
         return d === 1 ? 'вчора' : d + ' дн тому';
     }
 
-    // Префікс ролі перед ніком: ADMIN або VIP (звичайному користувачу — нічого)
     function badge(role) {
         if (role !== 'admin' && role !== 'vip') return null;
         var b = document.createElement('span');
@@ -43,10 +52,8 @@ var CB = (function () {
         return b;
     }
 
-    // Повна адреса фото: сервер повертає шлях на кшталт /avatar/nick?v=123
     function avatarUrl(path) { return path ? SERVER + path : '../images/images.png'; }
 
-    // Оновлює збережені дані після входу чи редагування профілю
     function remember(u) {
         try {
             localStorage.setItem('nick_name', u.nick_name);

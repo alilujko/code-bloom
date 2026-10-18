@@ -154,7 +154,9 @@ img, svg, video { max-width: 100%; }
     .room { width: auto !important; flex: none; padding: 8px 14px 8px 8px; }
     .room_last, .room_badge { display: none; }
     .chat_head { padding: 12px 14px; }
-    .chat_massages { padding: 14px 12px; }
+    .chat_massages { padding: 14px 12px; min-height: 0; }
+    /* Без min-height: 0 довга історія виштовхує поле вводу за низ екрана */
+    .chat_view { flex: 1; min-height: 0; }
     .bubble { max-width: 85%; }
     .composer { padding: 10px; gap: 8px; }
     .massage_input { min-width: 0; }
